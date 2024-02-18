@@ -1,7 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import mainReducer from "../reducers";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import favouritesReducer from "../reducers/mostliked";
+import playerReducer from "../reducers/player";
+
+const globalStore = combineReducers({
+  player: playerReducer,
+  favourites: favouritesReducer,
+});
 
 const store = configureStore({
-  reducer: mainReducer,
+  reducer: globalStore,
 });
 export default store;
